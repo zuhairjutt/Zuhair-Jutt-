@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your template theme fonts and styles here */
+        body {
+            font-family: 'Your Font', sans-serif;
+            color: var(--text-color);
+            background-color: var(--body-bg);
+        }
+
+        /* Styles for the dropdown menu */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center text horizontally */
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block; /* Display in-line */
+            color: #007bff; /* Change the color to your preferred main category color */
+        }
+
+        /* Styles for the dropdown list (subcategories) */
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+            display: none;
+        }
+
+        .category-list-item {
+            margin-bottom: 5px;
+        }
+
+        .category-list-item a {
+            text-decoration: none;
+            color: var(--text-color); /* Change text color based on mode */
+        }
+
+        /* Display subcategories when the category title is clicked */
+        .category-title.active + .category-list {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="category-title">Search By Category</div>
+        <ul class="category-list">
+            <li class="category-list-item"><a href="#">Men</a></li>
+            <li class="category-list-item"><a href="#">Product</a></li>
+            <li class="category-list-item"><a href="#">Women</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Add JavaScript to toggle the active class and change text color based on mode
+        const categoryTitle = document.querySelector('.category-title');
+        categoryTitle.addEventListener('click', () => {
+            categoryTitle.classList.toggle('active');
+        });
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            // Toggle text color based on mode
+            const textItems = document.querySelectorAll('.category-list-item a');
+            textItems.forEach(item => {
+                item.style.color = body.classList.contains('dark-mode') ? 'white' : 'black';
+            });
+        }
+    </script>
+</body>
+</html>
